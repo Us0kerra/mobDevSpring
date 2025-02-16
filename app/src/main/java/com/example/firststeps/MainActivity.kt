@@ -25,7 +25,6 @@ class MainActivity : AppCompatActivity() {
         println(D<0)
         println(floor(sqrt(D)) != sqrt(D))
         return (D < 0) || (floor(sqrt(D)) != sqrt(D)) || (a.toInt() == 0 && b.toInt() == 0) || (a.toInt() == 0 && b.toInt() == 0 && c.toInt() == 0)
-
     }
 
     fun calcQuadro(a: Double, b: Double, c:Double): String{
@@ -45,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         return "Введены некорректные числа"
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -59,23 +57,18 @@ class MainActivity : AppCompatActivity() {
         aInputTextView = findViewById(R.id.editTextA)
         bInputTextView = findViewById(R.id.editTextB)
         cInputTextView = findViewById(R.id.editTextC)
-        outputTextView = findViewById(R.id.textView)
 
         val button: Button = findViewById(R.id.button)
-
-        var aInput = aInputTextView.text.toString()
-        var bInput = bInputTextView.text.toString()
-        var cInput = cInputTextView.text.toString()
-
         val alert1 = AlertDialog.Builder(this).setPositiveButton("Понял", { d, id->d.cancel() } )
 
         button.setOnClickListener{
-            var quadroResult = calcQuadro(aInputTextView.text.toString().replace(',','.').toDouble(),bInputTextView.text.toString().replace(',','.').toDouble(),cInputTextView.text.toString().replace(',','.').toDouble())
-            //Да, длинная страшная строка
-            //Не бейте ^_^
+            var aInput = aInputTextView.text.toString().replace(',','.').toDouble()
+            var bInput = bInputTextView.text.toString().replace(',','.').toDouble()
+            var cInput = cInputTextView.text.toString().replace(',','.').toDouble()
+            var quadroResult = calcQuadro(aInput,bInput,cInput)
+
             alert1.setMessage(quadroResult).create()
             alert1.show()
-
         }
     }
 

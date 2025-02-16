@@ -5,6 +5,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -66,17 +67,15 @@ class MainActivity : AppCompatActivity() {
         var bInput = bInputTextView.text.toString()
         var cInput = cInputTextView.text.toString()
 
-
-        fun toastMe(text:String){
-            val myToast = Toast.makeText(this, text, Toast.LENGTH_SHORT)
-            myToast.show()
-        }
+        val alert1 = AlertDialog.Builder(this).setPositiveButton("Понял", { d, id->d.cancel() } )
 
         button.setOnClickListener{
             var quadroResult = calcQuadro(aInputTextView.text.toString().replace(',','.').toDouble(),bInputTextView.text.toString().replace(',','.').toDouble(),cInputTextView.text.toString().replace(',','.').toDouble())
             //Да, длинная страшная строка
             //Не бейте ^_^
-            toastMe(quadroResult)
+            alert1.setMessage(quadroResult).create()
+            alert1.show()
+
         }
     }
 

@@ -3,6 +3,7 @@ package com.example.firststeps
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -29,12 +30,13 @@ class MainActivity : AppCompatActivity() {
     fun calcQuadro(a: Double, b: Double, c:Double): String{
         var result1:Double = 0.0
         var result2:Double = 0.0
-        if (a.toInt() == 0){
-            var result = -c / b
-            return "x = $result"
-        }
+
         if (!integersNotCorrect(a,b,c)){
-            var D = b*b - 4*a*c
+            if (a.toInt() == 0){
+                val result = -c / b
+                return "x = $result"
+            }
+            val D = b*b - 4*a*c
             result1 = (-b + sqrt(D)) / (2*a)
             result2 = (-b - sqrt(D)) / (2*a)
             return "x1 = $result1, x2 = $result2"
@@ -58,16 +60,23 @@ class MainActivity : AppCompatActivity() {
         cInputTextView = findViewById(R.id.editTextC)
         outputTextView = findViewById(R.id.textView)
 
-        var button: Button = findViewById(R.id.button)
+        val button: Button = findViewById(R.id.button)
 
         var aInput = aInputTextView.text.toString()
         var bInput = bInputTextView.text.toString()
         var cInput = cInputTextView.text.toString()
 
+
+        fun toastMe(text:String){
+            val myToast = Toast.makeText(this, text, Toast.LENGTH_SHORT)
+            myToast.show()
+        }
+
         button.setOnClickListener{
-            outputTextView.text = calcQuadro(aInputTextView.text.toString().replace(',','.').toDouble(),bInputTextView.text.toString().replace(',','.').toDouble(),cInputTextView.text.toString().replace(',','.').toDouble())
+            var quadroResult = calcQuadro(aInputTextView.text.toString().replace(',','.').toDouble(),bInputTextView.text.toString().replace(',','.').toDouble(),cInputTextView.text.toString().replace(',','.').toDouble())
             //Да, длинная страшная строка
             //Не бейте ^_^
+            toastMe(quadroResult)
         }
     }
 

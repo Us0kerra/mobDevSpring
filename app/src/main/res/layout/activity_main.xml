@@ -7,19 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Прикольно конечно, но пиво будет?"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.889" />
-
     <EditText
         android:id="@+id/editTextA"
         android:layout_width="wrap_content"
@@ -46,10 +33,10 @@
         android:layout_marginBottom="35dp"
         android:autofillHints=""
         android:ems="10"
+        android:hint="Введите b"
         android:inputType="text"
         android:minHeight="48dp"
         android:text=""
-        android:hint="Введите b"
         app:layout_constraintBottom_toTopOf="@+id/editTextC"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/editTextA"
@@ -61,10 +48,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:ems="10"
+        android:hint="Введите c"
         android:inputType="text"
         android:minHeight="48dp"
         android:text=""
-        android:hint="Введите c"
         app:layout_constraintStart_toStartOf="@+id/editTextB"
         app:layout_constraintTop_toBottomOf="@+id/editTextB" />
 
@@ -72,12 +59,10 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="217dp"
-        android:layout_marginBottom="217dp"
+        android:layout_marginTop="60dp"
         android:text="Вычислить"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editTextB" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextC" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

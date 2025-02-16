@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var aInputTextView: TextView
     private lateinit var bInputTextView: TextView
     private lateinit var cInputTextView: TextView
-    private lateinit var outputTextView: TextView
 
     private fun integersNotCorrect(a: Double, b: Double, c:Double): Boolean{
         val D: Double = b*b - 4*a*c

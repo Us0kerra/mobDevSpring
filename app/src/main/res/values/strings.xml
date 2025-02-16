@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">first steps</string>
+    <string name="display_button">Кнопка \"отобразить\"</string>
 </resources>

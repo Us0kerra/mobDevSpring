@@ -1,12 +1,23 @@
 package com.example.firststeps
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var textView: TextView
+    var result: String = ""
+
+    private fun buildNumber(text:String){
+        val currentNumber = textView.text.toString()
+        textView.text = currentNumber + text
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -16,5 +27,8 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
     }
+    findViewById<Button>(R.id.buttonZero).setOnClickListener { buildNumber("0") }
+
 }

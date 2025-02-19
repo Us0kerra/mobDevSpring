@@ -29,6 +29,17 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+    var buttonZero: Button = findViewById(R.id.buttonZero)
+    var buttonOne: Button = findViewById(R.id.buttonOne)
+    var buttonTwo: Button = findViewById(R.id.buttonTwo)
+    var buttonThree: Button = findViewById(R.id.buttonThree)
+    var buttonFour: Button = findViewById(R.id.buttonFour)
+    var buttonFive: Button = findViewById(R.id.buttonFive)
+    var buttonSix: Button = findViewById(R.id.buttonSix)
+    var buttonSeven: Button = findViewById(R.id.buttonSeven)
+    var buttonEight: Button = findViewById(R.id.buttonEight)
+    var buttonNine: Button = findViewById(R.id.buttonNine)
+
 
 
 }

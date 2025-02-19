@@ -29,6 +29,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    findViewById<Button>(R.id.buttonZero).setOnClickListener { buildNumber("0") }
+
 
 }

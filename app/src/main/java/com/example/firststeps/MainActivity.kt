@@ -19,11 +19,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cInputTextView: TextView
 
     private fun integersNotCorrect(a: Double, b: Double, c:Double): Boolean{
+        if (a.isNaN() || b.isNaN() || c.isNaN()) {return true}
         val D: Double = b*b - 4*a*c
-        println(a.toInt() == 0)
-        println(D<0)
-        println(floor(sqrt(D)) != sqrt(D))
-        return (D < 0) || (floor(sqrt(D)) != sqrt(D)) || (a.toInt() == 0 && b.toInt() == 0) || (a.toInt() == 0 && b.toInt() == 0 && c.toInt() == 0)
+        return (D < 0) || (a.toInt() == 0 && b.toInt() == 0) || (a.toInt() == 0 && b.toInt() == 0 && c.toInt() == 0)
     }
 
     fun calcQuadro(a: Double, b: Double, c:Double): String{
@@ -40,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             result2 = (-b - sqrt(D)) / (2*a)
             return "x1 = $result1, x2 = $result2"
         }
-        return "Введены некорректные числа"
+        return "Корней нет"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -31,13 +31,14 @@ class MainActivity : AppCompatActivity() {
         var result1:Double = 0.0
         var result2:Double = 0.0
 
+        if (uncorrectEnter(a,b,c)){
+            return "Некорректный ввод"
+        }
+
         var aDouble = a.toDouble()
         var bDouble = b.toDouble()
         var cDouble = c.toDouble()
 
-        if (uncorrectEnter(a,b,c)){
-            return "Некорректный ввод"
-        }
 
         if (!integersNotCorrect(aDouble,bDouble,cDouble)){
             if (a.toInt() == 0){

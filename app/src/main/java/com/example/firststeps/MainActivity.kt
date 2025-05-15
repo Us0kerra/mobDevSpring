@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         if (display.text.toString() == "0") {
             display.text = ""
         }
+        display.text = display.text.toString().replace(",",".")
         display.append(button.text)
         adjustTextSize()
     }
@@ -49,7 +50,7 @@ class MainActivity : AppCompatActivity() {
     private fun calculate() {
         try {
             val result = evaluateExpression(display.text.toString())
-            display.text = formatResult(result).replace("Infinity", "Ошибка")
+            display.text = formatResult(result).replace("Infinity", "Ошибка").replace("-Ошибка", "Ошибка")
         } catch (e: Exception) {
             display.text = "Ошибка"
             isError = true
@@ -125,13 +126,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun toggleSign() {
-        if (isError || display.text.isEmpty()) return
 
         val text = display.text.toString()
+        if (isError || text.contains("Ошибка") || display.text.isEmpty()) return
 
         // Ищем последнее число в строке
-        val regex = """(\(?-?\d+(,\d+)?\)?)""".toRegex()  // Регулярное выражение для чисел (целых и с плавающей точкой)
-        val match = regex.findAll(text).toList().lastOrNull()  // Получаем последнее найденное число
+        val regex = """(\(?-?\d+([,.]\d+)?\)?)""".toRegex()  // Регулярное выражение для чисел (целых и с плавающей точкой)
+        val test_only_one = regex.findAll(text).toList() //Если число только одно
+        if (test_only_one.count() != 1){
+
+        }
+        val match = test_only_one.lastOrNull()  // Получаем последнее найденное число
 
         if (match != null) {
             var number = match.value
@@ -144,11 +149,13 @@ class MainActivity : AppCompatActivity() {
             // Меняем знак числа
             val newNumber = if (number.startsWith("-")) number.substring(1) else "-$number"
 
-            // Если новое число без отрицательного знака, скобки не нужны
-            val numberInBrackets = if (newNumber.startsWith("-")) "($newNumber)" else newNumber
-
-            // Заменяем только последнее число
+            var numberInBrackets = newNumber
+            if (test_only_one.count() != 1) {
+                // Если новое число без отрицательного знака, скобки не нужны
+                numberInBrackets = if (newNumber.startsWith("-")) "($newNumber)" else newNumber
+            }
             display.text = text.replaceRange(match.range, numberInBrackets)
+
         }
 
         adjustTextSize()
